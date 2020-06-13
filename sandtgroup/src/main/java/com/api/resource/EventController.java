@@ -33,7 +33,7 @@ public class EventController {
 	}
 	
 	@GetMapping("/findAllEvents")
-	public List<Event> getEvens(){
+	public List<Event> getEvents(){
 		return repository.findAll();
 	}
 	
@@ -42,9 +42,9 @@ public class EventController {
 		return repository.findById(id);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/deleteEvent/{id}")
 	public String deleteEvent(@PathVariable String id) {
 		repository.deleteById(id);
-		return "book deleted with id : "+id;
+		return "event deleted with id : "+id;
 	}
 }
