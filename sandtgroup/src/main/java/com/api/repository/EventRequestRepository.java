@@ -8,4 +8,5 @@ import com.api.model.EventRequest;
 
 public interface EventRequestRepository extends MongoRepository<EventRequest, String>{
 	List<EventRequest> findByEventId(String eventId);
+	List<EventRequest> deleteByEventId(String eventId);
 }
