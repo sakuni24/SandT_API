@@ -14,7 +14,6 @@ import lombok.ToString;
 public class Event {
 	private String id;
 	private String name; 
-	
 	private String date;
 	private String venue;
 	private String description;

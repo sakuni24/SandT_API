@@ -37,6 +37,11 @@ public class EventController {
 		return repository.findAll();
 	}
 	
+	@GetMapping("/findEventsByDate/{date}")
+	public List<Event> getEventsByDate(@PathVariable String date){	
+		return repository.findByDate(date);
+	}
+	
 	@GetMapping("/findAllEvents/{id}")
 	public Optional<Event> getEvent(@PathVariable String id){
 		return repository.findById(id);
