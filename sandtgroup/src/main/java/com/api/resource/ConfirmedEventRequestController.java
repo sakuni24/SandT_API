@@ -3,7 +3,10 @@ package com.api.resource;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.api.model.ConfirmedEventRequest;
 import com.api.repository.ConfirmedEventRequestRepository;
+import com.api.service.NotificationService;
 
 @RestController
 public class ConfirmedEventRequestController {
+	
+	private Logger logger = LoggerFactory.getLogger(ConfirmedEventRequestController.class); 
 
+	@Autowired
+	private NotificationService notificationService;
+	
 	@Autowired
 	private ConfirmedEventRequestRepository repository;
 	
@@ -25,6 +34,11 @@ public class ConfirmedEventRequestController {
 	@PostMapping("/addConfirmedEventRequest")
 	public String saveEvent(@RequestBody ConfirmedEventRequest confirmedeventrequest) {
 		repository.save(confirmedeventrequest);
+		try {
+			notificationService.sendNotification(confirmedeventrequest);
+		}catch(MailException e) {
+			logger.info("Error sending mail: "+e.getMessage());
+		}
 		return "Added a new event request";
 	}
 	
