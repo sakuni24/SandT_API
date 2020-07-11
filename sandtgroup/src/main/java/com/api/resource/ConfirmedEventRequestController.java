@@ -39,6 +39,7 @@ public class ConfirmedEventRequestController {
 		return repository.findAll();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/getConfirmedEventRequestsByEventId/{id}")
 	public List<ConfirmedEventRequest> getConfirmedEventRequestByEventId(@PathVariable String id){
 		return repository.findByEventId(id);
@@ -55,6 +56,7 @@ public class ConfirmedEventRequestController {
 		return "confirmed event request deleted with id : "+id;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@DeleteMapping("/deleteConfirmedEventRequestByEventId/{id}")
 	public String deleteConfirmedEventRequestByEventId(@PathVariable String id) {
 		repository.deleteByEventId(id);

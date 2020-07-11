@@ -13,5 +13,4 @@ public class SandtgroupApplication {
 		SpringApplication.run(SandtgroupApplication.class, args);
 		//main function - run this as a java application 
 	}
-
 }

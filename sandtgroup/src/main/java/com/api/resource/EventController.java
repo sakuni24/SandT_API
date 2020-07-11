@@ -28,27 +28,32 @@ public class EventController {
 		return "Added a new event";
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/updateEvent")
 	public String saveUpdatedEvent(@RequestBody Event event) {
 		repository.save(event);
 		return "Update the event";
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/findAllEvents")
 	public List<Event> getEvents(){
 		return repository.findAll();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/findEventsByDate/{date}")
 	public List<Event> getEventsByDate(@PathVariable String date){	
 		return repository.findByDate(date);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/findAllEvents/{id}")
 	public Optional<Event> getEvent(@PathVariable String id){
 		return repository.findById(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@DeleteMapping("/deleteEvent/{id}")
 	public String deleteEvent(@PathVariable String id) {
 		repository.deleteById(id);

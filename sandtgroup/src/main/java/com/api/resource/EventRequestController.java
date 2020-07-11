@@ -39,22 +39,26 @@ public class EventRequestController {
 		return repository.findAll();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/getEventRequestsByEventId/{id}")
 	public List<EventRequest> getEventRequestByEventId(@PathVariable String id){
 		return repository.findByEventId(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/getEventRequests/{id}")
 	public Optional<EventRequest> getEventRequest(@PathVariable String id){
 		return repository.findById(id);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@DeleteMapping("/deleteEventRequest/{id}")
 	public String deleteEventRequest(@PathVariable String id) {
 		repository.deleteById(id);
 		return "event request deleted with id : "+id;
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@DeleteMapping("/deleteEventRequestByEventId/{id}")
 	public String deletEventRequestByEventId(@PathVariable String id) {
 		repository.deleteByEventId(id);
